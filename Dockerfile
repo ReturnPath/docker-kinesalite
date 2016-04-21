@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER Rajat Vig <rajat.vig@gmail.com>
+ENV VERSION 1.11.4
 
 EXPOSE 4567
 
@@ -9,7 +9,7 @@ ENV DATADIR /var/lib/kinesalite
 RUN \
   mkdir $DATADIR && \
   apk add --no-cache python make g++ nodejs && \
-  npm install -g kinesalite && \
+  npm install -g kinesalite@${VERSION} && \
   apk del python make g++ && \
   rm -rf /tmp/* /var/cache/apk/*
 
